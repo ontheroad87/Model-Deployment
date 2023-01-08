@@ -28,6 +28,7 @@ class S(BaseHTTPRequestHandler):
         
     def score(self, data):
         clf = load('log_model.joblib') 
+        data['x3'] = data['x3'].str.slice(0, 3)
         tprobs = clf.predict_proba(data)[:, 1]
         return tprobs
 
